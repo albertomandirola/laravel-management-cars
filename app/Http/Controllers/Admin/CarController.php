@@ -15,7 +15,8 @@ class CarController extends Controller
      */
     public function index()
     {
-        //
+        $cars = Car::all();
+        return view('admin.cars.index', compact('cars'));
     }
 
     /**
@@ -25,7 +26,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.cars.create');
     }
 
     /**
@@ -36,7 +37,20 @@ class CarController extends Controller
      */
     public function store(StoreCarRequest $request)
     {
-        //
+        // recupero i dati inviati dalla form
+        $form_data = $request->all();
+
+        // creo una nuova istanza del model Project
+        $car = new Car();
+
+        // riempio gli altri campi con la funzione fill()
+        $car->fill($form_data);
+
+        // salvo il record sul db
+        $car->save();
+
+        // effettuo il redirect alla view index
+        return redirect()->route('admin.cars.index');
     }
 
     /**
@@ -58,7 +72,7 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        //
+        return view('admin.cars.edit', compact('car'));
     }
 
     /**
@@ -70,7 +84,14 @@ class CarController extends Controller
      */
     public function update(UpdateCarRequest $request, Car $car)
     {
-        //
+        // recupero i dati inviati dalla form
+        $form_data = $request->all();
+
+        // riempio gli altri campi con la funzione fill()
+        $car->update($form_data);
+
+        // effettuo il redirect alla view index
+        return redirect()->route('admin.cars.index');
     }
 
     /**

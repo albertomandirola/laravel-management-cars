@@ -18,7 +18,6 @@
                 <p>{{ $car->power }}</p>
                 <p>{{ $car->photos }}</p>
                 <p>{{ $car->description }}</p>
-
             </div>
         </div>
     </div>
