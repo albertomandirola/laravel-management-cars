@@ -43,6 +43,8 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
+                                        <a href="{{ route('admin.cars.show', ['car' => $car->id]) }}"
+                                            class="btn btn-primary m-2"><i class="fas fa-eye"></i></a>
                                     </div>
                                 </td>
 
