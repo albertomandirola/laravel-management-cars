@@ -19,6 +19,7 @@
                             <th scope="col">year</th>
                             <th scope="col">Engine</th>
                             <th scope="col">N di telaio</th>
+                            <th scope="col">Tools</th>
                         </tr>
                     </thead>
                     <tbody>
