@@ -41,7 +41,7 @@
                                     </form>
                                 </div>
                             </td>
-                            <td>{{ $car->n_chassis }}</td>
+
                         </tr>
                     @endforeach
                 </tbody>
