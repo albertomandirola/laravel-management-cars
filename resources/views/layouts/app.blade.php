@@ -23,7 +23,7 @@
     @vite(['resources/js/app.js'])
 </head>
 
-<body>
+<body class="@yield('body-class')">
     <div id="app">
         @include('partials.header')
         <main class="">
