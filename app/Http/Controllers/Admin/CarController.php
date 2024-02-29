@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
 {
@@ -47,6 +48,15 @@ class CarController extends Controller
 
         // creo una nuova istanza del model Project
         $car = new Car();
+
+        // verifico se la richiesta contiene l'immagine 
+        if($request->hasFile('photos')){
+
+            $path = Storage::disk('public')->put('car_photos', $form_data['photos']);
+
+            $form_data['photos'] = $path;
+            
+        };
 
         // riempio gli altri campi con la funzione fill()
         $car->fill($form_data);
@@ -93,6 +103,18 @@ class CarController extends Controller
         // recupero i dati inviati dalla form
         $form_data = $request->all();
 
+        // controllo se nel form stanno mettendo il file image 
+        if($request->hasFile('cover_image')){
+
+            // controllo se il file aveva già un immagine in precedenza 
+            if($car->cover_image != null){
+                Storage::disk('public')->delete($car->photos);
+            }
+            $path = Storage::disk('public')->put('car_photos', $form_data['photos']);
+                
+            $form_data['photos'] = $path;
+        }
+
         // riempio gli altri campi con la funzione fill()
         $car->update($form_data);
 
@@ -108,6 +130,11 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
+        // controllo se il file aveva già un immagine in precedenza 
+        if($project->cover_image != null){
+            Storage::disk('public')->delete($project->cover_image);
+        }
+
         $car->delete();
         return redirect()->route('admin.cars.index');
     }
