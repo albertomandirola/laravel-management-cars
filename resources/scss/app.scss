@@ -86,11 +86,16 @@ header{
     }
 }
 
-.login-page, .register-page {
+.homepage {
+    background-color: #F8F9FA;
+}
+
+.login-page, .register-page, .dashboard-page {
     background-image: url(/public/img/rolls_royce_black_badge_ghost_car_mountains_snow_nature_background_4k_5k_hd_cars.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 
 // FORM-LOGIN
 .form-container {
@@ -273,6 +278,14 @@ a.btn.btn-link {
     width: 550px;
 }
 
+.w-1300 {
+    width: 1300px;
+}
+
+.w-125 {
+    width: 125px;
+}
+
 .popup {
     --burger-line-width: 1.125em;
     --burger-line-height: 0.125em;
@@ -423,7 +436,7 @@ a.btn.btn-link {
     border-radius: var(--nav-button-border-radius);
     cursor: pointer;
     column-gap: var(--nav-button-distance);
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .popup-window ul li:nth-child(1) svg,
@@ -496,7 +509,7 @@ a.btn.btn-link {
     margin: 0 auto;
     width: 150px;
     height: 3em;
-    border: 2px solid #333;
+    border: 2px solid #B2B2B7;
     border-radius: 30em;
     font-size: 15px;
     font-family: inherit;
@@ -504,21 +517,46 @@ a.btn.btn-link {
     position: relative;
     overflow: hidden;
     z-index: 1;
-    background-color: #333;
+    background-color: transparent;
     transition: all 0.5s;
 
     a{
         text-decoration: none;
-        color: #fff;
+        color: #B2B2B7;
     }
 
     &:hover {
         a{
-            color: #333;
+            color: #fff;
         }
-        border: #fff;
-        background-color: #fff;
+        background-color: #B2B2B7;
         transition: all 0.5s;
     }
 
+}
+
+// Profile
+
+.btn-save {
+    color: #fff;
+    margin: 0 auto;
+    width: 150px;
+    height: 3em;
+    border: 2px solid rgb(0, 89, 255);
+    border-radius: 30em;
+    font-size: 15px;
+    font-family: inherit;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background-color: rgb(0, 89, 255);
+    transition: all 0.5s;
+
+    &:hover {
+        color: rgb(0, 89, 255);
+        background-color: #fff;
+        border: 2px solid #fff;
+        transition: all 0.5s;
+    }
 }

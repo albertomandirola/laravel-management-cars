@@ -7,6 +7,9 @@
         <div class="row justify-content-center">
 
             <div class="form-container w-600">
+                <h4 class="text-center text-white">
+                    Crea il tuo ID Royals Cars
+                </h4>
                 <form method="POST" action="{{ route('register') }}" class="form">
                     @csrf
                     <div class="form-group">
