@@ -25,7 +25,7 @@ class StoreCarRequest extends FormRequest
     {
         return [
             'model' => 'required|max:50|',
-            'brand' => 'required|max:30|',
+            'brand' => 'required|exists:brands,id',
             'year' => 'required',
             'type_of_engine' => 'required',
             'plate' => 'min:7|max:7|unique:cars',
@@ -46,7 +46,7 @@ class StoreCarRequest extends FormRequest
             'model.required' => 'Il nome del brand è obbligatorio',
             'model.max' => 'Il nome del modello deve essere massimo di 50 caratteri',
             'brand.required' => 'Il nome del brand è obbligatorio',
-            'brand.max' => 'Il nome del brand deve essere massimo di 30 caratteri',
+            'brand.exists' => 'Il nome del brand deve essere scelto tra quelli disponibili',
             'year.required' => 'L\'anno di produzione è obbligatorio',
             'type_of_engine.required' => 'Il tipo di alimentazione è obbligatorio',
             'plate.min' => 'Il numero di targa deve essere di 7 caratteri',

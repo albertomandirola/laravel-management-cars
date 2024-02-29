@@ -8,7 +8,7 @@
                 <form action="{{ route('admin.cars.store') }}" method="POST">
                     @csrf
                     <div class="form-group my-2">
-                        <label for="model" class="control-label m-1 text-danger ">Modello</label>
+                        <label for="model" class="control-label m-1">Modello</label>
                         <input type="text" class="form-control @error('model') is-invalid @enderror" name="model"
                             id="model" placeholder="Inserisci il modello" value="{{ old('model') }}" required>
                         @error('model')
@@ -16,15 +16,20 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
-                        <label for="brand" class="control-label m-1 text-danger ">Marca</label>
-                        <input type="text" class="form-control @error('brand') is-invalid @enderror" name="brand"
-                            id="brand" placeholder="Inserisci la marca" value="{{ old('brand') }}" required>
-                        @error('brand')
-                            <div class="text-danger m-1">{{ $message }}</div>
-                        @enderror
+                        <label for="brand" class="control-label m-1">Marca</label>
+                        <select name="brand" id="brand" class="form-select @error('brand') is-invalid @enderror">
+                            <option value="">Seleziona brand</option>
+                            @foreach ($brands as $brand)
+                                <option value="{{ $brand->id }}" @selected($brand->id == old('brand_id'))>{{ $brand->name }}
+                                </option>
+                            @endforeach
+                            @error('brand')
+                                <div class="text-danger m-1">{{ $message }}</div>
+                            @enderror
+                        </select>
                     </div>
                     <div class="form-group my-2">
-                        <label for="year" class="control-label m-1 text-danger ">Anno di produzione</label>
+                        <label for="year" class="control-label m-1">Anno di produzione</label>
                         <input type="text" class="form-control @error('year') is-invalid @enderror" name="year"
                             id="year" placeholder="Inserici l'anno di produzione" value="{{ old('year') }}" required>
                         @error('year')
@@ -32,7 +37,7 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
-                        <label for="type_of_engine" class="control-label m-1 text-danger ">Alimentazione</label>
+                        <label for="type_of_engine" class="control-label m-1">Alimentazione</label>
                         <input type="text" class="form-control @error('type_of_engine') is-invalid @enderror"
                             name="type_of_engine" id="type_of_engine" placeholder="Tipo di alimentazione"
                             value="{{ old('type_of_engine') }}" required>
@@ -41,7 +46,7 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
-                        <label for="plate" class="control-label m-1 text-danger ">Targa</label>
+                        <label for="plate" class="control-label m-1">Targa</label>
                         <input type="text" class="form-control @error('plate') is-invalid @enderror" name="plate"
                             id="plate" placeholder="Inserisci la targa" value="{{ old('plate') }}">
                         @error('plate')
@@ -49,7 +54,7 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
-                        <label for="type_of_gear" class="control-label m-1 text-danger ">Tipo trasmissione</label>
+                        <label for="type_of_gear" class="control-label m-1">Tipo trasmissione</label>
                         <input type="text" class="form-control @error('type_of_gear') is-invalid @enderror"
                             name="type_of_gear" id="type_of_gear" placeholder="Tipo di trasmissione"
                             value="{{ old('type_of_gear') }}" required>
@@ -58,7 +63,7 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
-                        <label for="n_chassis" class="control-label m-1 text-danger ">Numero di telaio</label>
+                        <label for="n_chassis" class="control-label m-1">Numero di telaio</label>
                         <input type="text" class="form-control @error('n_chassis') is-invalid @enderror" name="n_chassis"
                             id="n_chassis" placeholder="Inserisci il numero di telaio" value="{{ old('n_chassis') }}">
                         @error('n_chassis')
@@ -66,7 +71,7 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
-                        <label for="price" class="control-label m-1 text-danger ">Prezzo</label>
+                        <label for="price" class="control-label m-1">Prezzo</label>
                         <input type="text" class="form-control @error('price') is-invalid @enderror" name="price"
                             id="price" placeholder="Inserisci il prezzo" value="{{ old('price') }}" required>
                         @error('price')
@@ -74,7 +79,7 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
-                        <label for="doors" class="control-label m-1 text-danger ">Porte</label>
+                        <label for="doors" class="control-label m-1">Porte</label>
                         <input type="text" class="form-control @error('doors') is-invalid @enderror" name="doors"
                             id="doors" placeholder="Inserisci il numero di porte" value="{{ old('doors') }}" required>
                         @error('doors')
@@ -82,7 +87,7 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
-                        <label for="seats" class="control-label m-1 text-danger ">Posti</label>
+                        <label for="seats" class="control-label m-1">Posti</label>
                         <input type="text" class="form-control @error('seats') is-invalid @enderror" name="seats"
                             id="seats" placeholder="Inserisci il numero di posti passeggero"
                             value="{{ old('seats') }}" required>
@@ -91,7 +96,7 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
-                        <label for="color" class="control-label m-1 text-danger ">Colore</label>
+                        <label for="color" class="control-label m-1">Colore</label>
                         <input type="text" class="form-control @error('color') is-invalid @enderror" name="color"
                             id="color" placeholder="Inserisci il colore" value="{{ old('color') }}" required>
                         @error('color')
@@ -99,7 +104,7 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
-                        <label for="power" class="control-label m-1 text-danger ">Cavalli</label>
+                        <label for="power" class="control-label m-1">Cavalli</label>
                         <input type="text" class="form-control @error('power') is-invalid @enderror" name="power"
                             id="power" placeholder="Inserisci il numero di cavalli" value="{{ old('power') }}"
                             required>
@@ -108,7 +113,7 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
-                        <label for="photos" class="control-label m-1 text-danger ">Foto</label>
+                        <label for="photos" class="control-label m-1">Foto</label>
                         <input type="text" class="form-control @error('photos') is-invalid @enderror" name="photos"
                             id="photos" placeholder="Inserisci il link delle foto" value="{{ old('photos') }}">
                         @error('photos')
@@ -116,7 +121,7 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
-                        <label for="description" class="control-label m-1 text-danger ">Descrizione</label>
+                        <label for="description" class="control-label m-1">Descrizione</label>
                         <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
                             placeholder="Info aggiuntive" cols="100" rows="10" required>{{ old('description') }}</textarea>
                         @error('description')

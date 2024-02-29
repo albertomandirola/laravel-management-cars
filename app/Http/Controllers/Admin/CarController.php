@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Models\Car;
+use App\Models\Brand;
 use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
 use App\Http\Controllers\Controller;
@@ -28,7 +29,9 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view('admin.cars.create');
+        $brands = Brand::all();
+
+        return view('admin.cars.create', compact('brands'));
     }
 
     /**
@@ -74,7 +77,8 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        return view('admin.cars.edit', compact('car'));
+        $brands = Brand::all();
+        return view('admin.cars.edit', compact('car', 'brands'));
     }
 
     /**
@@ -104,7 +108,7 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
-        $car -> delete();
+        $car->delete();
         return redirect()->route('admin.cars.index');
     }
 }

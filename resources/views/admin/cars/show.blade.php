@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <h2>{{ $car->model }}</h2>
-                <p>{{ $car->brand }}</p>
+                <p>{{ $car->brand ? $car->brand : 'Brand non specificato' }}</p>
                 <p>{{ $car->year }}</p>
                 <p>{{ $car->type_of_engine }}</p>
                 <p>{{ $car->plate }}</p>
