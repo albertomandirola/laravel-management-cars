@@ -13,9 +13,9 @@
                     <strong>Optionals:</strong>
                 <ul>
                     @forelse ($car->optionals as $optional)
-                        <li>{{ $optional->name }}</li>
+                        <li class="text-capitalize">{{ $optional->name }}</li>
                     @empty
-                        <p>No optionals for this car</p>
+                        <p class="text-danger">No optionals for this car</p>
                     @endforelse
                 </ul>
                 </p>
