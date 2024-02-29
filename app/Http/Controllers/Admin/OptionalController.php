@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\StoreOptionalRequest;
 use App\Http\Requests\UpdateOptionalRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Optional;
 
 class OptionalController extends Controller
@@ -15,7 +17,8 @@ class OptionalController extends Controller
      */
     public function index()
     {
-        //
+        $optionals = Optional::all();
+        return view('admin.optionals.index', compact('optionals'));
     }
 
     /**
@@ -25,7 +28,8 @@ class OptionalController extends Controller
      */
     public function create()
     {
-        //
+        $brands = Brand::all();
+        return view('admin.optionals.create', compact('brands'));
     }
 
     /**
@@ -36,7 +40,13 @@ class OptionalController extends Controller
      */
     public function store(StoreOptionalRequest $request)
     {
-        //
+        $form_data = $request->all();
+        $newoptional = new Optional();
+
+        $newoptional->fill($form_data);
+        $newoptional->save();
+
+        return redirect()->route('admin.optionals.index');
     }
 
     /**
@@ -58,7 +68,7 @@ class OptionalController extends Controller
      */
     public function edit(Optional $optional)
     {
-        //
+        return view('admin.optionals.edit', compact('optional'));
     }
 
     /**
@@ -70,7 +80,10 @@ class OptionalController extends Controller
      */
     public function update(UpdateOptionalRequest $request, Optional $optional)
     {
-        //
+        $form_data = $request->all();
+        $optional->update($form_data);
+
+        return redirect()->route('admin.optionals.index');
     }
 
     /**
@@ -81,6 +94,7 @@ class OptionalController extends Controller
      */
     public function destroy(Optional $optional)
     {
-        //
+        $optional->delete();
+        return redirect()->route('admin.optionals.index');
     }
 }

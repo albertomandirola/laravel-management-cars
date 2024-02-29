@@ -18,6 +18,7 @@
                         @endif
 
                         <a href="{{ route('admin.cars.index') }}">Cars</a>
+                        <a href="{{ route('admin.optionals.index') }}">Optionals</a>
                     </div>
                 </div>
             </div>
