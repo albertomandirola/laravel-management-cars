@@ -24,6 +24,9 @@
                         <div>
                             <a href="{{ route('admin.brands.index') }}">Brands</a>
                         </div>
+                        <div>
+                            <a href="{{ route('admin.optionals.index') }}">Optionals</a>
+                        </div>
                     </div>
                 </div>
             </div>
