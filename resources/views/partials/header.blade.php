@@ -37,26 +37,44 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
-                                <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
+                        <label class="popup">
+                            <input type="checkbox">
+                            <div class="burger" tabindex="0">
+                                <span></span>
+                                <span></span>
+                                <span></span>
                             </div>
-                        </li>
+                            <nav class="popup-window">
+                                <ul>
+                                    <li>
+                                        <button>
+                                            <span><a class="dropdown-item"
+                                                    href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></span>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button>
+                                            <span><a class="dropdown-item"
+                                                    href="{{ url('profile') }}">{{ __('Profile') }}</a></span>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button>
+                                            <span><a class="dropdown-item" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                                </a></span>
+                                        </button>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                    <li>
+                                </ul>
+                            </nav>
+                        </label>
                     @endguest
                 </ul>
             </div>
