@@ -33,11 +33,11 @@
                             {{ old('remember') ? 'checked' : '' }}>
 
                         <label class="form-check-label" for="remember">
-                            {{ __('Remember Me') }}
+                            {{ __('Ricordami') }}
                         </label>
                     </div>
                     <button type="submit" class="btn_login">
-                        {{ __('Login') }}
+                        {{ __('Accedi') }}
                     </button>
 
                     @if (Route::has('password.request'))
