@@ -6,6 +6,8 @@ use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
 use App\Models\Brand;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class BrandController extends Controller
 {
@@ -16,7 +18,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands = Brand::all();
+        return view('admin.brands.index', compact('brands'));
     }
 
     /**
@@ -26,7 +29,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.brands.create');
     }
 
     /**
@@ -37,7 +40,31 @@ class BrandController extends Controller
      */
     public function store(StoreBrandRequest $request)
     {
-        //
+        // recupero i dati inviati dalla form
+        $form_data = $request->all();
+
+        // verifico se la richiesta contiene il campo logo:
+        if ($request->hasFile('logo')) {
+            // eseguo l'upload del file e recupero il path
+            $path = Storage::disk('public')->put('brands_logos', $form_data['logo']);
+            $form_data['logo'] = $path;
+        }
+
+        // creo una nuova istanza del model Brand
+        $brand = new Brand();
+
+        // creo lo slug del progetto
+        $slug = Str::slug($form_data['name'], '-');
+        $form_data['slug'] = $slug;
+
+        // riempio gli altri campi con la funzione fill()
+        $brand->fill($form_data);
+
+        // salvo il record sul db
+        $brand->save();
+
+        // effettuo il redirect alla view index
+        return redirect()->route('admin.brands.index');
     }
 
     /**
@@ -48,7 +75,7 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        //
+        return view('admin.brands.show', compact('brand'));
     }
 
     /**
@@ -59,7 +86,7 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        return view('admin.brands.edit', compact('brand'));
     }
 
     /**
@@ -71,7 +98,17 @@ class BrandController extends Controller
      */
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
-        //
+        // recupero i dati inviati dalla form
+        $form_data = $request->all();
+
+        // creo lo slug della tipologia
+        $form_data['slug'] = Str::slug($form_data['name'], '-');
+
+        // aggiorno il record sul db
+        $brand->update($form_data);
+
+        // effettuo il redirect alla view index
+        return redirect()->route('admin.brands.index');
     }
 
     /**
@@ -82,6 +119,9 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+        // elimino la tipologia dal db
+        $brand->delete();
+
+        return redirect()->route('admin.brands.index')->with('message', 'Hai cancellato correttamente la tipologia');
     }
 }

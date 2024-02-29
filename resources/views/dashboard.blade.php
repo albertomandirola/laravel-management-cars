@@ -16,8 +16,12 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-
-                        <a href="{{ route('admin.cars.index') }}">Cars</a>
+                        <div>
+                            <a href="{{ route('admin.cars.index') }}">Cars</a>
+                        </div>
+                        <div>
+                            <a href="{{ route('admin.brands.index') }}">Brands</a>
+                        </div>
                     </div>
                 </div>
             </div>
