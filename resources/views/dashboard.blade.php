@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
+@section('body-class', 'dashboard-page')
+
 @section('content')
     <div class="form-container my-5 border border-0">
-        <h2 class="fs-4 text-secondary mt-4 text-center text-white">
+        <h2 class="fs-4 text-secondary mt-3 text-center text-white">
             {{ __('Dashboard') }}
         </h2>
         <div class="row justify-content-center">

@@ -7,6 +7,9 @@
         <div class="row justify-content-center">
 
             <div class="form-container">
+                <h4 class="text-center text-white">
+                    Accedi a Royals Cars
+                </h4>
                 <form method="POST" action="{{ route('login') }}" class="form">
                     @csrf
                     <div class="form-group">
