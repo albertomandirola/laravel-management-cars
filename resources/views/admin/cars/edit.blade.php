@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-uppercase text-dark-emphasis ">Modifica dell'auto "{{ $car->brand }} {{ $car->model }},
+                <h2 class="text-uppercase text-dark-emphasis ">Modifica dell'auto "{{ $car->brand_id }} {{ $car->model }},
                     targa: {{ $car->plate }}":
                 </h2>
                 <form action="{{ route('admin.cars.update', ['car' => $car->id]) }}" method="POST">
@@ -21,10 +21,10 @@
                     </div>
                     <div class="form-group my-2">
                         <label for="brand" class="control-label m-1">Marca</label>
-                        <select name="brand" id="brand" class="form-select @error('brand') is-invalid @enderror">
+                        <select name="brand_id" id="brand" class="form-select @error('brand') is-invalid @enderror">
                             <option value="">Seleziona brand</option>
                             @foreach ($brands as $brand)
-                                <option value="{{ $brand->id }}" @selected($brand->id == old('brand_id', $car->brand ? $car->brand : ''))>{{ $brand->name }}
+                                <option value="{{ $brand->id }}" @selected($brand->id == old('brand', $car->brand_id ? $car->brand_id : ''))>{{ $brand->name }}
                                 </option>
                             @endforeach
                             @error('brand')

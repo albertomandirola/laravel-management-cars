@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->string('model', 50);
-            $table->string('brand', 30);
             $table->integer('year');
             $table->string('type_of_engine');
             $table->string('plate', 7)->nullable()->unique();
@@ -31,7 +30,6 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->timestamps();
         });
-        
     }
 
     /**

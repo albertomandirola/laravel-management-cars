@@ -2,7 +2,11 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CarController;
+<<<<<<< HEAD
 use App\Http\Controllers\Admin\OptionalController;
+=======
+use App\Http\Controllers\Admin\BrandController;
+>>>>>>> origin/brand_crud
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +33,7 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('cars', CarController::class);
     Route::resource('optionals', OptionalController::class);
+    Route::resource('brands', BrandController::class);
 });
 
 Route::middleware('auth')->group(function () {

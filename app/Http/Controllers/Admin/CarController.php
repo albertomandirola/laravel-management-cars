@@ -44,6 +44,7 @@ class CarController extends Controller
      */
     public function store(StoreCarRequest $request)
     {
+
         // recupero i dati inviati dalla form
         $form_data = $request->all();
 
@@ -113,6 +114,7 @@ class CarController extends Controller
      */
     public function update(UpdateCarRequest $request, Car $car)
     {
+
         // recupero i dati inviati dalla form
         $form_data = $request->all();
 
