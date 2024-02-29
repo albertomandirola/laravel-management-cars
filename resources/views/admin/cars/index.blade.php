@@ -27,7 +27,7 @@
                             <tr>
                                 <th scope="row">{{ $car->id }}</th>
                                 <td>{{ $car->model }}</td>
-                                <td>{{ $car->brand }}</td>
+                                <td>{{ $car->brand ? $car->brand : 'Brand non specificato' }}</td>
                                 <td>{{ $car->year }}</td>
                                 <td>{{ $car->type_of_engine }}</td>
                                 <td>{{ $car->n_chassis }}</td>

@@ -20,13 +20,17 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
-                        <label for="brand" class="control-label m-1 text-danger ">Marca</label>
-                        <input type="text" class="form-control @error('brand') is-invalid @enderror" name="brand"
-                            id="brand" placeholder="Inserisci la marca" value="{{ old('brand') ?? $car->brand }}"
-                            required>
-                        @error('brand')
-                            <div class="text-danger m-1">{{ $message }}</div>
-                        @enderror
+                        <label for="brand" class="control-label m-1">Marca</label>
+                        <select name="brand" id="brand" class="form-select @error('brand') is-invalid @enderror">
+                            <option value="">Seleziona brand</option>
+                            @foreach ($brands as $brand)
+                                <option value="{{ $brand->id }}" @selected($brand->id == old('brand_id', $car->brand ? $car->brand : ''))>{{ $brand->name }}
+                                </option>
+                            @endforeach
+                            @error('brand')
+                                <div class="text-danger m-1">{{ $message }}</div>
+                            @enderror
+                        </select>
                     </div>
                     <div class="form-group my-2">
                         <label for="year" class="control-label m-1 text-danger ">Anno di produzione</label>
