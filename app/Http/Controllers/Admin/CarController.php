@@ -71,7 +71,14 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        return view('admin.cars.show', compact('car'));
+        $fullprice = 0;
+
+        if (count($car->optionals) > 0) {
+            foreach ($car->optionals as $optional) {
+                $fullprice = $car->price + $optional->price;
+            }
+        }
+        return view('admin.cars.show', compact('car', 'fullprice'));
     }
 
     /**
