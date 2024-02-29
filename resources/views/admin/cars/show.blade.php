@@ -9,6 +9,16 @@
                 <p>{{ $car->year }}</p>
                 <p>{{ $car->type_of_engine }}</p>
                 <p>{{ $car->plate }}</p>
+                <p>
+                    <strong>Optionals:</strong>
+                <ul>
+                    @forelse ($car->optionals as $optional)
+                        <li>{{ $optional->name }}</li>
+                    @empty
+                        <p>No optionals for this car</p>
+                    @endforelse
+                </ul>
+                </p>
                 <p>{{ $car->type_of_gear }}</p>
                 <p>{{ $car->n_chassis }}</p>
                 <p>{{ $car->price }}</p>

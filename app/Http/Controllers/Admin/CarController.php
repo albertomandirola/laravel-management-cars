@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Optional;
 
 class CarController extends Controller
 {
@@ -30,8 +31,8 @@ class CarController extends Controller
     public function create()
     {
         $brands = Brand::all();
-
-        return view('admin.cars.create', compact('brands'));
+        $optionals = Optional::all();
+        return view('admin.cars.create', compact('brands', 'optionals'));
     }
 
     /**
@@ -53,6 +54,10 @@ class CarController extends Controller
 
         // salvo il record sul db
         $car->save();
+
+        if ($request->has('optional')) {
+            $car->optionals()->attach($form_data['optional']);
+        }
 
         // effettuo il redirect alla view index
         return redirect()->route('admin.cars.index');
@@ -78,7 +83,8 @@ class CarController extends Controller
     public function edit(Car $car)
     {
         $brands = Brand::all();
-        return view('admin.cars.edit', compact('car', 'brands'));
+        $optionals = Optional::all();
+        return view('admin.cars.edit', compact('car', 'brands', 'optionals'));
     }
 
     /**
@@ -96,6 +102,10 @@ class CarController extends Controller
         // riempio gli altri campi con la funzione fill()
         $car->update($form_data);
 
+        if ($request->has('optional')) {
+            $car->optionals()->sync($form_data['optional']);
+        }
+
         // effettuo il redirect alla view index
         return redirect()->route('admin.cars.index');
     }
@@ -108,6 +118,7 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
+        $car->optionals()->detach();
         $car->delete();
         return redirect()->route('admin.cars.index');
     }
