@@ -113,6 +113,34 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
+                        <label for="" class="control-label m-1 text-danger ">Optionals:</label>
+                        <div class="accordion" id="accordionOptionals">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Seleziona gli Optionals:
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionOptionals">
+                                    <div class="accordion-body d-flex gap-3">
+                                        @foreach ($optionals as $optional)
+                                            <div class="d-flex gap-1">
+                                                <input type="checkbox" name="optional[]" class=" form-check"
+                                                    id="optional-{{ $optional->id }}" value="{{ $optional->id }}">
+                                                <label for="optional-{{ $optional->id }}"
+                                                    class="text-capitalize form-label">{{ $optional->name }}</label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="form-group my-2">
                         <label for="photos" class="control-label m-1">Foto</label>
                         <input type="file" class="form-control @error('photos') is-invalid @enderror" name="photos"
                             id="photos" placeholder="Inserisci il link delle foto">
