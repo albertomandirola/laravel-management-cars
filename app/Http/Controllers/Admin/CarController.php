@@ -103,6 +103,18 @@ class CarController extends Controller
         // recupero i dati inviati dalla form
         $form_data = $request->all();
 
+        // controllo se nel form stanno mettendo il file image 
+        if($request->hasFile('cover_image')){
+
+            // controllo se il file aveva già un immagine in precedenza 
+            if($car->cover_image != null){
+                Storage::disk('public')->delete($car->photos);
+            }
+            $path = Storage::disk('public')->put('car_photos', $form_data['photos']);
+                
+            $form_data['photos'] = $path;
+        }
+
         // riempio gli altri campi con la funzione fill()
         $car->update($form_data);
 
@@ -118,6 +130,11 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
+        // controllo se il file aveva già un immagine in precedenza 
+        if($project->cover_image != null){
+            Storage::disk('public')->delete($project->cover_image);
+        }
+
         $car->delete();
         return redirect()->route('admin.cars.index');
     }
