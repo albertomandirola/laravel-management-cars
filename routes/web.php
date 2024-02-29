@@ -2,11 +2,8 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CarController;
-<<<<<<< HEAD
 use App\Http\Controllers\Admin\OptionalController;
-=======
 use App\Http\Controllers\Admin\BrandController;
->>>>>>> origin/brand_crud
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
