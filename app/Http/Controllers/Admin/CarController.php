@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
 {
@@ -47,6 +48,15 @@ class CarController extends Controller
 
         // creo una nuova istanza del model Project
         $car = new Car();
+
+        // verifico se la richiesta contiene l'immagine 
+        if($request->hasFile('photos')){
+
+            $path = Storage::disk('public')->put('car_photos', $form_data['photos']);
+
+            $form_data['photos'] = $path;
+            
+        };
 
         // riempio gli altri campi con la funzione fill()
         $car->fill($form_data);
