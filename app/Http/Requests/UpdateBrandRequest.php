@@ -24,8 +24,8 @@ class UpdateBrandRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:50|unique:brands',
-            'year' => 'numeric|max:4',
+            'name' => 'required|max:50',
+            'year' => 'numeric',
             'phone_number' => 'required|max:30',
             'email_address' => 'required|max:50',
             'logo' => 'nullable|image',

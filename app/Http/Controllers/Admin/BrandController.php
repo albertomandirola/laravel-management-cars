@@ -29,7 +29,8 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('admin.brands.create');
+        $error_name = '';
+        return view('admin.brands.create', compact('car', 'error_name'));
     }
 
     /**
@@ -48,6 +49,19 @@ class BrandController extends Controller
             // eseguo l'upload del file e recupero il path
             $path = Storage::disk('public')->put('brands_logos', $form_data['logo']);
             $form_data['logo'] = $path;
+        }
+
+        // Verifica se esiste un altro brand con lo stesso nome
+
+        if ($form_data['name'] != null) {
+            $exists = Brand::where('name', 'LIKE', $form_data['name'])
+                ->where('slug', '!=', $brand->slug)
+                ->exists();
+
+            if ($exists) {
+                $error_name = 'Hai inserito una targa già presente in un altro articolo';
+                return redirect()->route('admin.brands.edit', compact('brand', 'error_name'));
+            }
         }
 
         // creo una nuova istanza del model Brand
@@ -86,7 +100,8 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        return view('admin.brands.edit', compact('brand'));
+        $error_name = '';
+        return view('admin.brands.edit', compact('brand','error_name'));
     }
 
     /**
@@ -103,6 +118,19 @@ class BrandController extends Controller
 
         // creo lo slug della tipologia
         $form_data['slug'] = Str::slug($form_data['name'], '-');
+       
+        // Verifica se esiste un altro brand con lo stesso nome
+
+        if ($form_data['name'] != null) {
+            $exists = Brand::where('name', 'LIKE', $form_data['name'])
+                ->where('slug', '!=', $brand->slug)
+                ->exists();
+
+            if ($exists) {
+                $error_name = 'Hai inserito una targa già presente in un altro articolo';
+                return redirect()->route('admin.brands.edit', compact('brand', 'error_name'));
+            }
+        }
 
         // aggiorno il record sul db
         $brand->update($form_data);

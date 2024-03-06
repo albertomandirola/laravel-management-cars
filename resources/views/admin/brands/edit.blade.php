@@ -16,6 +16,11 @@
                         @error('name')
                             <div class=" m-1">{{ $message }}</div>
                         @enderror
+                        @if ($error_name != '')
+                            <div class="text-danger m-1 ">
+                                {{ $error_name }}
+                            </div>
+                        @endif
                     </div>
                     <div class="form-group my-2">
                         <label for="country" class="control-label m-1  ">Paese</label>
