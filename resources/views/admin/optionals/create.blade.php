@@ -33,7 +33,7 @@
                         @enderror
                     </div>
                     <div class="form-group my-2">
-                        <label for="brand" class="control-label m-1">Marca</label>
+                        <label for="brand" class="control-label m-1 text-danger">Marca</label>
                         <select name="brand" id="brand" class="form-select @error('brand') is-invalid @enderror">
                             <option value="">Seleziona brand</option>
                             @foreach ($brands as $brand)

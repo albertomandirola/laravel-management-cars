@@ -24,10 +24,10 @@ class StoreOptionalRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:50|min:5',
-            'price' => 'required|max:8|min:3',
-            'color' => 'max:30|min:5',
-            'description' => 'max:60000|min:15'
+            'name' => 'required|max:50',
+            'price' => 'required|max:8',
+            'color' => 'max:30',
+            'description' => 'max:60000'
         ];
     }
 

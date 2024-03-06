@@ -68,7 +68,8 @@ class OptionalController extends Controller
      */
     public function edit(Optional $optional)
     {
-        return view('admin.optionals.edit', compact('optional'));
+        $brands = Brand::all();
+        return view('admin.optionals.edit', compact('optional', 'brands'));
     }
 
     /**
