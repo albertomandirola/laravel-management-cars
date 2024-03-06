@@ -36,7 +36,7 @@ class UpdateCarRequest extends FormRequest
             'seats' => '',
             'color' => '|max:20',
             'power' => '',
-            'photos' => 'max:255',
+            'path_image' => 'max:255',
             'description' => ''
         ];
     }
@@ -63,7 +63,7 @@ class UpdateCarRequest extends FormRequest
             'color.required' => 'Il colore è obbligatorio',
             'color.max' => 'Il colore deve essere massimo di 20 caratteri',
             'power.required' => 'Il numero di porte è obbligatorio',
-            'photos.max' => 'Il link alla foto non può superare i 255 caratteri',
+            'path_image.max' => 'Il link alla foto non può superare i 255 caratteri',
             'description.required' => 'La descrizione del progetto è obbligatoria'
         ];
     }
