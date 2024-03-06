@@ -21,7 +21,7 @@ class CarController extends Controller
     public function show($slug)
     {
         $car = Car::with('optionals', 'brand')->where('slug', $slug)->first();
-        if (!$car) {
+        if ($car) {
             return response()->json([
                 'success' => true,
                 'car' => $car
