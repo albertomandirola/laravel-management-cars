@@ -54,11 +54,11 @@ class CarController extends Controller
         $car = new Car();
 
         // verifico se la richiesta contiene l'immagine 
-        if ($request->hasFile('photos')) {
+        if ($request->hasFile('path_image')) {
 
-            $path = Storage::disk('public')->put('car_photos', $form_data['photos']);
+            $path = Storage::disk('public')->put('car_photos', $form_data['path_image']);
 
-            $form_data['photos'] = $path;
+            $form_data['path_image'] = $path;
         };
 
         // Verifica se esiste un altra macchina con la stessa targa 
@@ -177,15 +177,15 @@ class CarController extends Controller
 
 
         // controllo se nel form stanno mettendo il file image 
-        if ($request->hasFile('cover_image')) {
+        if ($request->hasFile('path_image')) {
 
             // controllo se il file aveva già un immagine in precedenza 
-            if ($car->cover_image != null) {
-                Storage::disk('public')->delete($car->photos);
+            if ($car->path_image != null) {
+                Storage::disk('public')->delete($car->path_image);
             }
-            $path = Storage::disk('public')->put('car_photos', $form_data['photos']);
+            $path = Storage::disk('public')->put('car_photos', $form_data['path_image']);
 
-            $form_data['photos'] = $path;
+            $form_data['path_image'] = $path;
         }
 
         // riempio gli altri campi con la funzione fill()
