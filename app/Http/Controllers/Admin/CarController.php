@@ -69,7 +69,7 @@ class CarController extends Controller
            
             if ($exists) {
                 $error_plate = 'Hai inserito una targa già presente in un altro articolo';
-                return redirect()->route('admin.cars.edit', compact('car', 'error_message'));
+                return redirect()->route('admin.cars.edit', compact('car', 'error_plate'));
             }
         }
 
@@ -82,7 +82,7 @@ class CarController extends Controller
            
             if ($exists) {
                 $error_chassis = 'Hai inserito una targa già presente in un altro articolo';
-                return redirect()->route('admin.cars.edit', compact('car', 'error_message'));
+                return redirect()->route('admin.cars.edit', compact('car', 'error_chassis'));
             }
         }
 
