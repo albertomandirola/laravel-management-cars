@@ -36,7 +36,10 @@
                 <p>{{ $car->seats }}</p>
                 <p>{{ $car->color }}</p>
                 <p>{{ $car->power }}</p>
+                @if
                 <img src="{{ asset('/storage/' . $car->photos) }}" alt="{{ $car->title }}" width="200">
+            @else
+                @endif
                 <p>{{ $car->description }}</p>
             </div>
         </div>
