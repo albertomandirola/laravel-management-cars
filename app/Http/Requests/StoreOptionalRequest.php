@@ -27,7 +27,6 @@ class StoreOptionalRequest extends FormRequest
             'name' => 'required|max:50|min:5',
             'price' => 'required|max:8|min:3',
             'color' => 'max:30|min:5',
-            'brand' => 'required|max:30|min:5',
             'description' => 'max:60000|min:15'
         ];
     }
@@ -43,9 +42,6 @@ class StoreOptionalRequest extends FormRequest
             'price.min' => 'The price must be at least 3 characters length',
             'color.max' => 'The color can be a max of 30 characters length',
             'color.min' => 'The color must be at least 5 characters length',
-            'brand.required' => 'The brand of optional is mandatory',
-            'brand.max' => 'The brand can be a max of 30 characters length',
-            'brand.min' => 'The brand must be at least 5 characters length',
             'description.max' => 'The description can be a max of 60.000 characters length',
             'description.min' => 'The description must be at least 15 characters length',
         ];
