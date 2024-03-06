@@ -11,7 +11,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                <form action="{{ route('admin.brands.destroy', ['brand' => $brand->slug]) }}" method="POST">
+                <form action="{{ route('admin.brands.destroy', ['brand' => $brand->id]) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Elimina</button>
