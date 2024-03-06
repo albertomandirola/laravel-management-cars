@@ -10,7 +10,7 @@
                     <div class="form-group my-2">
                         <label for="model" class="control-label m-1">Modello</label>
                         <input type="text" class="form-control @error('model') is-invalid @enderror" name="model"
-                            id="model" placeholder="Inserisci il modello" value="{{ old('model') }}" required>
+                            id="model" placeholder="Inserisci il modello" value="{{ old('model') }}">
                         @error('model')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
@@ -31,7 +31,7 @@
                     <div class="form-group my-2">
                         <label for="year" class="control-label m-1">Anno di produzione</label>
                         <input type="text" class="form-control @error('year') is-invalid @enderror" name="year"
-                            id="year" placeholder="Inserici l'anno di produzione" value="{{ old('year') }}" required>
+                            id="year" placeholder="Inserici l'anno di produzione" value="{{ old('year') }}">
                         @error('year')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
@@ -40,7 +40,7 @@
                         <label for="type_of_engine" class="control-label m-1">Alimentazione</label>
                         <input type="text" class="form-control @error('type_of_engine') is-invalid @enderror"
                             name="type_of_engine" id="type_of_engine" placeholder="Tipo di alimentazione"
-                            value="{{ old('type_of_engine') }}" required>
+                            value="{{ old('type_of_engine') }}">
                         @error('type_of_engine')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
@@ -52,12 +52,18 @@
                         @error('plate')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
+                        @if ($error_plate != '')
+                            <div class="text-danger m-1 ">
+                                {{ $error_plate }}
+                            </div>
+                        @endif
+
                     </div>
                     <div class="form-group my-2">
                         <label for="type_of_gear" class="control-label m-1">Tipo trasmissione</label>
                         <input type="text" class="form-control @error('type_of_gear') is-invalid @enderror"
                             name="type_of_gear" id="type_of_gear" placeholder="Tipo di trasmissione"
-                            value="{{ old('type_of_gear') }}" required>
+                            value="{{ old('type_of_gear') }}">
                         @error('type_of_gear')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
@@ -69,11 +75,16 @@
                         @error('n_chassis')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
+                        @if ($error_chassis != '')
+                            <div class="text-danger m-1 ">
+                                {{ $error_chassis }}
+                            </div>
+                        @endif
                     </div>
                     <div class="form-group my-2">
                         <label for="price" class="control-label m-1">Prezzo</label>
                         <input type="text" class="form-control @error('price') is-invalid @enderror" name="price"
-                            id="price" placeholder="Inserisci il prezzo" value="{{ old('price') }}" required>
+                            id="price" placeholder="Inserisci il prezzo" value="{{ old('price') }}">
                         @error('price')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
@@ -81,7 +92,7 @@
                     <div class="form-group my-2">
                         <label for="doors" class="control-label m-1">Porte</label>
                         <input type="text" class="form-control @error('doors') is-invalid @enderror" name="doors"
-                            id="doors" placeholder="Inserisci il numero di porte" value="{{ old('doors') }}" required>
+                            id="doors" placeholder="Inserisci il numero di porte" value="{{ old('doors') }}">
                         @error('doors')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
@@ -90,7 +101,7 @@
                         <label for="seats" class="control-label m-1">Posti</label>
                         <input type="text" class="form-control @error('seats') is-invalid @enderror" name="seats"
                             id="seats" placeholder="Inserisci il numero di posti passeggero"
-                            value="{{ old('seats') }}" required>
+                            value="{{ old('seats') }}">
                         @error('seats')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
@@ -98,7 +109,7 @@
                     <div class="form-group my-2">
                         <label for="color" class="control-label m-1">Colore</label>
                         <input type="text" class="form-control @error('color') is-invalid @enderror" name="color"
-                            id="color" placeholder="Inserisci il colore" value="{{ old('color') }}" required>
+                            id="color" placeholder="Inserisci il colore" value="{{ old('color') }}">
                         @error('color')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
@@ -106,8 +117,7 @@
                     <div class="form-group my-2">
                         <label for="power" class="control-label m-1">Cavalli</label>
                         <input type="text" class="form-control @error('power') is-invalid @enderror" name="power"
-                            id="power" placeholder="Inserisci il numero di cavalli" value="{{ old('power') }}"
-                            required>
+                            id="power" placeholder="Inserisci il numero di cavalli" value="{{ old('power') }}">
                         @error('power')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
@@ -151,7 +161,7 @@
                     <div class="form-group my-2">
                         <label for="description" class="control-label m-1">Descrizione</label>
                         <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
-                            placeholder="Info aggiuntive" cols="100" rows="10" required>{{ old('description') }}</textarea>
+                            placeholder="Info aggiuntive" cols="100" rows="10">{{ old('description') }}</textarea>
                         @error('description')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror

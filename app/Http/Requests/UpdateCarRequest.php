@@ -26,18 +26,18 @@ class UpdateCarRequest extends FormRequest
         return [
             'model' => 'required|max:50|',
             'brand_id' => 'required|max:30|',
-            'year' => 'required',
-            'type_of_engine' => 'required',
-            'plate' => 'min:7|max:7|unique:cars',
-            'type_of_gear' => 'required|max:30|',
-            'n_chassis' => 'max:17|unique:cars',
-            'price' => 'required|max:8',
-            'doors' => 'required',
-            'seats' => 'required',
-            'color' => 'required|max:20',
-            'power' => 'required',
+            'year' => '',
+            'type_of_engine' => '',
+            'plate' => 'max:7',
+            'type_of_gear' => '|max:30|',
+            'n_chassis' => 'max:17',
+            'price' => '|max:8',
+            'doors' => '',
+            'seats' => '',
+            'color' => '|max:20',
+            'power' => '',
             'photos' => 'max:255',
-            'description' => 'required'
+            'description' => ''
         ];
     }
     public function messages()

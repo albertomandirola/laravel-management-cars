@@ -24,20 +24,20 @@ class StoreCarRequest extends FormRequest
     public function rules()
     {
         return [
-            'model' => 'required|max:50|',
-            'brand_id' => 'required|exists:brands,id',
-            'year' => 'required',
-            'type_of_engine' => 'required',
-            'plate' => 'min:7|max:7|unique:cars',
-            'type_of_gear' => 'required|max:30|',
+            'model' => 'required|max:50',
+            'brand_id' => 'exists:brands,id',
+            'year' => '',
+            'type_of_engine' => '',
+            'plate' => 'max:7|unique:cars',
+            'type_of_gear' => 'max:30|',
             'n_chassis' => 'max:17|unique:cars',
-            'price' => 'required|max:8',
-            'doors' => 'required',
-            'seats' => 'required',
-            'color' => 'required|max:20',
-            'power' => 'required',
+            'price' => 'max:8',
+            'doors' => '',
+            'seats' => '',
+            'color' => 'max:20',
+            'power' => '',
             'photos' => 'max:255',
-            'description' => 'required'
+            'description' => ''
         ];
     }
     public function messages()

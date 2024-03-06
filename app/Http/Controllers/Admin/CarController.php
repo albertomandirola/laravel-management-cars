@@ -60,6 +60,32 @@ class CarController extends Controller
             
         };
 
+        // Verifica se esiste un altra macchina con la stessa targa 
+        
+        if($form_data['plate']!=null){
+            $exists = Car::where('plate','LIKE', $form_data['plate'])
+            ->where('id', '!=', $car->id)
+            ->exists();
+           
+            if ($exists) {
+                $error_plate = 'Hai inserito una targa già presente in un altro articolo';
+                return redirect()->route('admin.cars.edit', compact('car', 'error_message'));
+            }
+        }
+
+        // Verifica se esiste un altra macchina con lo stesso numero di telaio
+
+        if($form_data['n_chassis']!=null){
+            $exists = Car::where('n_chassis','LIKE', $form_data['n_chassis'])
+            ->where('id', '!=', $car->id)
+            ->exists();
+           
+            if ($exists) {
+                $error_chassis = 'Hai inserito una targa già presente in un altro articolo';
+                return redirect()->route('admin.cars.edit', compact('car', 'error_message'));
+            }
+        }
+
         // riempio gli altri campi con la funzione fill()
         $car->fill($form_data);
 
@@ -118,6 +144,34 @@ class CarController extends Controller
         // recupero i dati inviati dalla form
         $form_data = $request->all();
 
+        // Verifica se esiste un altra macchina con la stessa targa 
+        
+        if($form_data['plate']!=null){
+            $exists = Car::where('plate','LIKE', $form_data['plate'])
+            ->where('id', '!=', $car->id)
+            ->exists();
+           
+            if ($exists) {
+                $error_message = 'Hai inserito una targa già presente in un altro articolo';
+                return redirect()->route('admin.cars.edit', compact('car', 'error_message'));
+            }
+        }
+
+        // Verifica se esiste un altra macchina con lo stesso numero di telaio
+
+        if($form_data['n_chassis']!=null){
+            $exists = Car::where('n_chassis','LIKE', $form_data['n_chassis'])
+            ->where('id', '!=', $car->id)
+            ->exists();
+           
+            if ($exists) {
+                $error_message = 'Hai inserito una targa già presente in un altro articolo';
+                return redirect()->route('admin.cars.edit', compact('car', 'error_message'));
+            }
+        }
+
+        
+
         // controllo se nel form stanno mettendo il file image 
         if($request->hasFile('cover_image')){
 
@@ -150,8 +204,8 @@ class CarController extends Controller
     public function destroy(Car $car)
     {
         // controllo se il file aveva già un immagine in precedenza 
-        if($project->cover_image != null){
-            Storage::disk('public')->delete($project->cover_image);
+        if($car->cover_image != null){
+            Storage::disk('public')->delete($car->cover_image);
         }
 
         $car->optionals()->detach();
