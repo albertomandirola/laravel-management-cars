@@ -30,7 +30,7 @@ class BrandController extends Controller
     public function create()
     {
         $error_name = '';
-        return view('admin.brands.create', compact('car', 'error_name'));
+        return view('admin.brands.create', compact('error_name'));
     }
 
     /**
