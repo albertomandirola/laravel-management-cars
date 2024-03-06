@@ -110,13 +110,15 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        $fullprice = 0;
+
+        $fullprice = $car->price; // Inizializza $fullprice con il prezzo base del veicolo
 
         if (count($car->optionals) > 0) {
             foreach ($car->optionals as $optional) {
-                $car->price = $car->price + $optional->price;
+                $fullprice += $optional->price; // Aggiungi il prezzo opzionale a $fullprice
             }
         }
+
         return view('admin.cars.show', compact('car', 'fullprice'));
     }
 
