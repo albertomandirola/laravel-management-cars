@@ -150,7 +150,7 @@ class CarController extends Controller
 
         // Verifica se esiste un altra macchina con la stessa targa 
 
-        if ($form_data['plate'] != null) {
+        if ($form_data['plate'] != '') {
             $exists = Car::where('plate', 'LIKE', $form_data['plate'])
                 ->where('id', '!=', $car->id)
                 ->exists();
@@ -163,7 +163,7 @@ class CarController extends Controller
 
         // Verifica se esiste un altra macchina con lo stesso numero di telaio
 
-        if ($form_data['n_chassis'] != null) {
+        if ($form_data['n_chassis'] != '') {
             $exists = Car::where('n_chassis', 'LIKE', $form_data['n_chassis'])
                 ->where('id', '!=', $car->id)
                 ->exists();

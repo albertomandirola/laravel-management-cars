@@ -52,7 +52,11 @@
                         @error('plate')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
-
+                        @if ($error_plate != '')
+                            <div class="text-danger m-1 ">
+                                {{ $error_plate }}
+                            </div>
+                        @endif
 
                     </div>
                     <div class="form-group my-2">
@@ -71,6 +75,11 @@
                         @error('n_chassis')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
+                        @if ($error_chassis != '')
+                            <div class="text-danger m-1 ">
+                                {{ $error_chassis }}
+                            </div>
+                        @endif
 
                     </div>
                     <div class="form-group my-2">
@@ -143,10 +152,10 @@
 
                     </div>
                     <div class="form-group my-2">
-                        <label for="photos" class="control-label m-1">Foto</label>
-                        <input type="file" class="form-control @error('photos') is-invalid @enderror" name="photos"
-                            id="photos" placeholder="Inserisci il link delle foto">
-                        @error('photos')
+                        <label for="path_image" class="control-label m-1">Foto</label>
+                        <input type="file" class="form-control @error('path_image') is-invalid @enderror"
+                            name="path_image" id="path_image" placeholder="Inserisci il link delle foto">
+                        @error('path_image')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
                     </div>

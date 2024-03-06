@@ -158,11 +158,11 @@
 
                     </div>
                     <div class="form-group my-2">
-                        <label for="photos" class="control-label m-1 text-danger ">Foto</label>
-                        <input type="text" class="form-control @error('photos') is-invalid @enderror" name="photos"
-                            id="photos" placeholder="Inserisci il link delle foto"
-                            value="{{ old('photos') ?? $car->photos }}">
-                        @error('photos')
+                        <label for="path_image" class="control-label m-1 text-danger ">Foto</label>
+                        <input type="text" class="form-control @error('path_image') is-invalid @enderror"
+                            name="path_image" id="path_image" placeholder="Inserisci il link delle foto"
+                            value="{{ old('path_image') ?? $car->path_image }}">
+                        @error('path_image')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
                     </div>
