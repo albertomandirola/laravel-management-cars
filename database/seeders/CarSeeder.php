@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 
 use Faker\Generator as Faker;
 use App\Models\Car;
+use Illuminate\Support\Str;
 
 class CarSeeder extends Seeder
 {
@@ -21,7 +22,6 @@ class CarSeeder extends Seeder
             $new_car = new Car();
 
             $new_car->model = $faker->word;
-            $new_car->brand = $faker->numberBetween(1, 10); 
             $new_car->year = $faker->numberBetween(2000, 2022);
             $new_car->type_of_engine = $faker->word;
             $new_car->plate = $faker->optional()->numberBetween(1, 9999999); 
@@ -32,8 +32,8 @@ class CarSeeder extends Seeder
             $new_car->seats = $faker->numberBetween(2, 7);
             $new_car->color = $faker->colorName;
             $new_car->power = $faker->numberBetween(50, 500);
-            $new_car->photos = $faker->imageUrl();
             $new_car->description = $faker->paragraph;
+            $new_car->slug = Str::slug($new_car->model, '-');
 
             $new_car->save();
         }

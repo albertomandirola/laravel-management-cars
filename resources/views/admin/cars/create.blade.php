@@ -52,11 +52,7 @@
                         @error('plate')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
-                        @if ($error_plate != '')
-                            <div class="text-danger m-1 ">
-                                {{ $error_plate }}
-                            </div>
-                        @endif
+
 
                     </div>
                     <div class="form-group my-2">
@@ -75,11 +71,7 @@
                         @error('n_chassis')
                             <div class="text-danger m-1">{{ $message }}</div>
                         @enderror
-                        @if ($error_chassis != '')
-                            <div class="text-danger m-1 ">
-                                {{ $error_chassis }}
-                            </div>
-                        @endif
+
                     </div>
                     <div class="form-group my-2">
                         <label for="price" class="control-label m-1">Prezzo</label>
