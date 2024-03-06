@@ -39,7 +39,7 @@ class BrandController extends Controller
      * @param  \App\Http\Requests\StoreBrandRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBrandRequest $request)
+    public function store(StoreBrandRequest $request, Brand  $brand)
     {
         // recupero i dati inviati dalla form
         $form_data = $request->all();
@@ -60,7 +60,7 @@ class BrandController extends Controller
 
             if ($exists) {
                 $error_name = 'Hai inserito una targa già presente in un altro articolo';
-                return redirect()->route('admin.brands.edit', compact('brand', 'error_name'));
+                return redirect()->route('admin.brands.create', compact('brand', 'error_name'));
             }
         }
 
