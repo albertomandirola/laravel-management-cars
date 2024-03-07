@@ -88,6 +88,10 @@ class CarController extends Controller
             }
         }
 
+        // creo lo slug del progetto
+        $slug = Str::slug($form_data['model'], '-');
+        $form_data['slug'] = $slug;
+
         // riempio gli altri campi con la funzione fill()
         $car->fill($form_data);
 
@@ -189,6 +193,8 @@ class CarController extends Controller
 
             $form_data['path_image'] = $path;
         }
+        // creo lo slug della tipologia
+        $form_data['slug'] = Str::slug($form_data['model'], '-');
 
         // riempio gli altri campi con la funzione fill()
         $car->update($form_data);
