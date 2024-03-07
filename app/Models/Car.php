@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Car extends Model
 {
     use HasFactory;
-    protected $fillable = ['model', 'brand_id', 'year', 'type_of_engine', 'plate', 'type_of_gear', 'n_chassis', 'price', 'doors', 'seats', 'color', 'power', 'path_image', 'description'];
+    protected $fillable = ['model', 'brand_id', 'year', 'type_of_engine', 'plate', 'type_of_gear', 'n_chassis', 'price', 'doors', 'seats', 'color', 'power', 'path_image', 'description', 'slug'];
     public function optionals()
     {
         return $this->belongsToMany(Optional::class);

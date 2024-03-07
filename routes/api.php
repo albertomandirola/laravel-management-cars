@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\BrandController as BrandController;
+use App\Http\Controllers\Api\BrandController as BrandController;
 use App\Http\Controllers\Api\CarController as CarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/cars', [CarController::class, 'index']);
 Route::get('/cars/{slug}', [CarController::class, 'show']);
+Route::get('/cars/brand/{slug}', [CarController::class, 'get_brand_cars']);
 Route::get('brands', [BrandController::class, 'index']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
