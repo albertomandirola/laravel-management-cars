@@ -158,8 +158,9 @@
 
                     </div>
                     <div class="form-group my-2">
+
                         <label for="path_image" class="control-label m-1 text-danger ">Foto</label>
-                        <input type="text" class="form-control @error('path_image') is-invalid @enderror"
+                        <input type="file" class="form-control @error('path_image') is-invalid @enderror"
                             name="path_image" id="path_image" placeholder="Inserisci il link delle foto"
                             value="{{ old('path_image') ?? $car->path_image }}">
                         @error('path_image')
