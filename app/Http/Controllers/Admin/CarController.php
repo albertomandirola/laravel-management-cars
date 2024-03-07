@@ -10,6 +10,7 @@ use App\Http\Requests\UpdateCarRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Optional;
+use Illuminate\Support\Str;
 
 class CarController extends Controller
 {
