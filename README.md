@@ -1,3 +1,4 @@
+![Schermata 2024-04-17 alle 16 33 55](https://github.com/albertomandirola/laravel-management-cars/assets/145669273/fb031168-8df4-4a00-9e3b-85ce036d4f0a)
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -62,3 +63,6 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
